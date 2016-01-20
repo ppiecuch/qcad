@@ -1,6 +1,10 @@
 include( ../../../shared.pri )
 TEMPLATE = lib
-CONFIG += plugin
+r_static_libs {
+    CONFIG += staticlib
+} else {
+	CONFIG += plugin
+}
 TARGET = qcadecmaapi
 CONFIG -= warn_on
 CONFIG += warn_off
@@ -29,3 +33,6 @@ LIBS += \
     -lqcadstemmer \
     -lqcadzip \
     -lquazip
+
+exists(/opt/local/lib/libz.a):LIBS += /opt/local/lib/libz.a
+else:LIBS += -lz

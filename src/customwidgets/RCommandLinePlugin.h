@@ -25,6 +25,7 @@
 class RCommandLinePlugin: public QObject, public QDesignerCustomWidgetInterface {
 
     Q_OBJECT
+	Q_PLUGIN_METADATA(IID "org.qcad.RCommandLinePlugin")
     Q_INTERFACES(QDesignerCustomWidgetInterface)
 
 public:

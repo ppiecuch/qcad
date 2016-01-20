@@ -2,6 +2,7 @@ include(../../../shared_app.pri)
 
 TEMPLATE = app
 TARGET = mainwindow_prototype
+CONFIG -= app_bundle
 DEPENDPATH += .
 
 HEADERS += MainWindow.h

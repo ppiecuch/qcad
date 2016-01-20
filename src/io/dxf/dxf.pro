@@ -22,7 +22,7 @@ r_static_libs {
     CONFIG += staticlib
 }
 else {
-    DESTDIR = ../../../plugins
+    DESTDIR = $$PWD/../../../bin-$$[QMAKE_SPEC]/plugins
 }
 
-POST_TARGETDEPS += ../../../$$ROUTDIR/$${RLIBPRE}dxflib$${RLIBPOST}
+POST_TARGETDEPS += $$PWD/../../../bin-$$[QMAKE_SPEC]/$$ROUTDIR/$${RLIBPRE}dxflib$${RLIBPOST}

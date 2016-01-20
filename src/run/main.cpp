@@ -253,6 +253,11 @@ int main(int argc, char *argv[]) {
     RBlock::init();
     RView::init();
 
+#ifdef QCAD_STATIC_LIBS
+	// register static designer plugins
+	extern void initCustomWidgetsInstances();
+	initCustomWidgetsInstances();
+#endif
     RPluginLoader::loadPlugins(true);
 
     RLinetypeListMetric::init();
@@ -269,6 +274,7 @@ int main(int argc, char *argv[]) {
     RScriptHandlerRegistry::registerScriptHandler(RScriptHandlerEcma::factory,
             RScriptHandlerEcma::getSupportedFileExtensionsStatic());
     RScriptHandler* handler = RScriptHandlerRegistry::getGlobalScriptHandler("js");
+
     Q_ASSERT(handler!=NULL);
     handler->init(autostartFile, arguments.mid(i+1));
 

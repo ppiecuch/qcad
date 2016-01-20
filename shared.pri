@@ -11,6 +11,8 @@ else {
 }
 
 DEFINES += QCAD_DLL
+CONFIG += r_static_libs
+
 
 # output directory:
 CONFIG(debug, debug|release) {
@@ -146,10 +148,12 @@ QMAKE_TARGET_DESCRIPTION = QCAD Application Framework
 QMAKE_TARGET_COPYRIGHT = 
 QMAKE_TARGET_PRODUCT = QCAD Application Framework
 
-DESTDIR = $$PWD/$$ROUTDIR
+DESTDIR = $$PWD/bin-$$[QMAKE_SPEC]/$$ROUTDIR
 UI_DIR = .ui
 
-LIBS += -L$$PWD/$$ROUTDIR
+LIBS += \
+	-L$$PWD/bin-$$[QMAKE_SPEC]/$$ROUTDIR \
+	-L$$PWD/bin-$$[QMAKE_SPEC]/$$ROUTDIR/script
 
 CONFIG(debug, debug|release) {
     !win32 {

@@ -20,6 +20,7 @@ win32 {
 
 SOURCES += $$PWD/main.cpp
 TEMPLATE = app
+QT += widgets
 OTHER_FILES += $$PWD/run.dox
 
 win32 {

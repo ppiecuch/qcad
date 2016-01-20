@@ -17,7 +17,13 @@ SUBDIRS = qtscript_core \
           qtscript_webkitwidgets
 }
 
+#          qtscript_multimedia \
+#          qtscript_svg \
 #          qs_eval
 
-#          qtscript_multimedia \
-#      qtscript_svg \
+exists("../plugin_import_qtbindings.cpp") {
+	message("copying file ../plugin_import_qtbindings.cpp")
+	system(cp "../plugin_import_qtbindings.cpp" "$$OUT_PWD/../..")
+}
+
+OTHER_FILES += ../plugin_import_qtbindings.cpp

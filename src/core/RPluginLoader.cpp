@@ -119,7 +119,7 @@ void RPluginLoader::loadPlugin(QObject* plugin, bool init, const QString& fileNa
         }
         else {
             // ignore other Qt plugins
-            qDebug() << "Plugin does not implement RPluginInterface";
+            qDebug() << plugin << "Plugin does not implement RPluginInterface";
             return;
         }
     }

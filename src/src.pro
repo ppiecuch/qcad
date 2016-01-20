@@ -21,3 +21,5 @@ SUBDIRS = \
 
 TEMPLATE = subdirs
 OTHER_FILES += api_overview.dox
+
+!r_mobile: run.depends = core gui 3rdparty

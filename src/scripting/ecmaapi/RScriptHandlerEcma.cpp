@@ -353,6 +353,7 @@ bool RScriptHandlerEcma::translatorInstalled = false;
 
 RScriptHandlerEcma::RScriptHandlerEcma() : engine(NULL), debugger(NULL) {
     //  registerScriptHandler(this, getSupportedFileExtensionsStatic());
+
     engine = new QScriptEngine();
 
     alwaysLoadScripts = qApp->arguments().contains("-always-load-scripts");

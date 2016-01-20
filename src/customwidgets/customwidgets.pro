@@ -1,6 +1,13 @@
 TARGET = qcadcustomwidgets
-CONFIG += plugin
+TEMPLATE = lib
+
 include( ../../shared.pri )
+
+r_static_libs {
+    CONFIG += static
+} else {
+    CONFIG += plugin
+}
 
 SOURCES = RShortcutLineEditPlugin.cpp \
     RCharacterWidgetPlugin.cpp \
@@ -35,7 +42,13 @@ contains(QT_VERSION, ^5\\.[1-5]\\..*) || contains(QT_VERSION, ^4\\..*\\..*) {
     SOURCES += RWebViewPlugin.cpp
     HEADERS += RWebViewPlugin.h
 }
-TEMPLATE = lib
-LIBS += -lqcadgui -lqcadcore
-DESTDIR = ../../plugins/designer
+
+LIBS += -lqcadgui -lqcadentity -lqcadcore -lopennurbs -lzlib
+staticlib|static {
+	SOURCES += plugin_import_customwidgets.cpp
+	DESTDIR = $$PWD/../../bin-$$[QMAKE_SPEC]/$$ROUTDIR
+	DEFINES += QT_STATICPLUGIN
+} else {
+	DESTDIR = $$PWD/../../bin-$$[QMAKE_SPEC]/designer
+}
 OTHER_FILES += customwidgets.dox

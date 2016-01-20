@@ -2,6 +2,8 @@ TEMPLATE    = app
 TARGET      = dxflib_example
 CONFIG      -= app_bundle
 SOURCES     = main.cpp
-DESTDIR     = .
+
+include(../../../shared.pri)
+
 INCLUDEPATH += ../../../src/3rdparty/dxflib/src
-LIBS += -L../../../debug -ldxflib
+LIBS += -L$$PWD/bin-$$[QMAKE_SPEC]/$$ROUTDIR -ldxflib

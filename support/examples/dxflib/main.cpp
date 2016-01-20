@@ -16,8 +16,8 @@ int main() {
         dxf.writeVPort(*dw);
 
         // LTYPE:
-        dw->tableLineTypes(1);
-        dxf.writeLineType(*dw, DL_LineTypeData("CONTINUOUS", 0));
+        dw->tableLinetypes(1);
+        dxf.writeLinetype(*dw, DL_LinetypeData("CONTINUOUS", "Continuous", 0, 3, 6));
         dw->tableEnd();
 
         // LAYER:

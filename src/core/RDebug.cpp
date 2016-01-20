@@ -63,14 +63,24 @@ void RDebug::startTimer(int id) {
 #endif
 }
 
+#ifdef absolutetime_to_nanoseconds
+# undef absolutetime_to_nanoseconds
+#endif
+
+static mach_timebase_info_data_t _timerlib_info;
+static void absolutetime_to_nanoseconds (uint64_t mach_time, uint64_t* clock ) {
+	*clock = mach_time * _timerlib_info.numer / _timerlib_info.denom;
+}
 
 int RDebug::stopTimer(int id, const QString& msg, int msThreshold) {
 #if defined(Q_OS_MAC) && !defined(Q_OS_IOS)
-    Nanoseconds elapsedNano;
+	if ( _timerlib_info.denom == 0 )
+		mach_timebase_info( &_timerlib_info );
+    uint64_t elapsedNano;
     uint64_t end = mach_absolute_time();
     uint64_t elapsed = end - timerMac[id];
-    elapsedNano = AbsoluteToNanoseconds( *(AbsoluteTime *) &elapsed );
-    uint64_t t = (* (uint64_t *) &elapsedNano);
+    absolutetime_to_nanoseconds(elapsed, &elapsedNano);
+    uint64_t t = elapsedNano;
     timerMac.remove(id);
 #else
     int t = timer[id].elapsed() * 1000000;

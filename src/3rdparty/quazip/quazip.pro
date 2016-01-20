@@ -24,5 +24,6 @@ else {
 include(src/quazip.pri)
 
 !win32-msvc* {
-    LIBS += -lz
+	exists(/opt/local/lib/libz.a):LIBS += /opt/local/lib/libz.a
+    else:LIBS += -lz
 }
