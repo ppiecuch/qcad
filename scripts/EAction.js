@@ -1042,7 +1042,7 @@ EAction.getToolBar = function(title, objectName, toolBarArea, category) {
         }
         tb.objectName = objectName;
         tb.setProperty("Category", category);
-        var s = RSettings.getIntValue("ToolBar/IconSize", tb.iconSize.width());
+        var s = RSettings.getIntValue("ToolBar/IconSize", 24 /*tb.iconSize.width()*/);
         tb.iconSize = new QSize(s,s);
         appWin.addToolBar(toolBarArea, tb);
     }

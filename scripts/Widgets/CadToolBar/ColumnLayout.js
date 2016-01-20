@@ -150,7 +150,7 @@ ColumnLayout.prototype.setGeometry = function(rect) {
     if (this.toolBar.floating && verticalWhenFloating) {
         horizontal = false;
     }
-    var iconSize = RSettings.getIntValue("CadToolBar/IconSize", 32);
+    var iconSize = RSettings.getIntValue("CadToolBar/IconSize", 24);
 
     if (this.property("sHintColumns")===columns &&
         this.property("sHintWidth")===width &&

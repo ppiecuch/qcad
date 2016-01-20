@@ -63,7 +63,8 @@ OptionsToolBar.postInit = function(basePath) {
     if (RS.getSystemId()==="osx") {
         h = 44;
     }
-    optionsToolBar.setFixedHeight(h);
+    //optionsToolBar.setFixedHeight(h);
+    optionsToolBar.iconSize = new QSize(24,24);
 
     var flags = new Qt.ToolBarAreas(Qt.TopToolBarArea | Qt.BottomToolBarArea);
     optionsToolBar.setAllowedAreas(flags);
@@ -77,7 +78,7 @@ OptionsToolBar.postInit = function(basePath) {
     iconLabel.setContentsMargins(6, 0, 6, 0);
     iconLabel.styleSheet =
         "QLabel {"
-        + "border-radius: 6px; "
+        + "border-radius: 3px; "
         + "background-color: "
         + "    qlineargradient(spread:pad, "
         + "        x1: 0, y1: 0, "
@@ -86,7 +87,7 @@ OptionsToolBar.postInit = function(basePath) {
         + "        stop: 0.5 rgba(255,255,255,192), "
         + "        stop: 1 rgba(255,255,255,0) "
         + "    ); "
-        + "border: 2px solid #8f8f8f;"
+        + "border: 1px solid #8f8f8f;"
         + "margin: 2px 2px 2px 2px;"
         + "}";
 
